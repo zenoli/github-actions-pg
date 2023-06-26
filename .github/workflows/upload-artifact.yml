@@ -1,0 +1,25 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - run: echo hi > world.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          path: world.txt
+
+      - run: echo howdy > extra-file.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          path: extra-file.txt
+
+      - run: echo hello > world.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          path: world.txt
